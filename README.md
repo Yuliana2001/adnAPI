@@ -19,15 +19,58 @@ Sobre esta lógica se construyen dos endpoints:
 - `POST /mutant` – verifica si un ADN es mutante.
 - `GET /mutant/stats` – devuelve estadísticas de verificaciones.
 
-URL base del despliegue:
+**URL base del despliegue:**
 
 ```text
 https://e10l15fn75.execute-api.us-east-2.amazonaws.com
+```
 
 ## Endpoint POST /mutant
 
 **URL**
-POST https://e1015h7r5.execute-api.us-east-2.amazonaws.com/mutant
+```text
+POST https://e1015h7r5.execute-api.us-east-2.amazonaws.com/mutant/mutant
+```
+Respuestas
+
+200 OK – ADN mutante:
+```text
+{ "isMutant": true }
+```
+403 Forbidden – ADN humano:
+```text
+{ "isMutant": false }
+```
+## Endpoint GET /mutant/stats
+
+**URL**
+```text
+GET https://e1015h7r5.execute-api.us-east-2.amazonaws.com/mutant/stats
+```
+
+Respuesta de ejemplo
+
+{
+  "count_mutant_dna": 2,
+  "count_human_dna": 1,
+  "ratio": 0.6666666666666666
+}
+
+
+count_mutant_dna: cantidad de ADN mutantes verificados.
+
+count_human_dna: cantidad de ADN humanos verificados.
+
+ratio: count_mutant_dna / count_human_dna (0 si count_human_dna = 0).
+
+
+
+
+
+
+
+
+
 
 
 
